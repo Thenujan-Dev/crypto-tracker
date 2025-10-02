@@ -2,20 +2,19 @@ import React from "react";
 import { Chart } from "react-google-charts";
 import type { HistoricalData } from "../crypto";
 
-// Tuple type for HistoricalDataItem
-
 interface LineChartProps {
   historicalData: HistoricalData;
 }
 
 const LineChart: React.FC<LineChartProps> = ({ historicalData }) => {
+  // Safely prepare chart data
   const chartData = [
     ["Date", "Price (USD)", "Market Cap (USD)", "Total Volume (USD)"],
     ...historicalData.prices.map(([timestamp, price], i) => [
       new Date(timestamp),
       price,
-      historicalData.market_caps[i][1],
-      historicalData.total_volumes[i][1],
+      historicalData.market_caps[i]?.[1] ?? 0,
+      historicalData.total_volumes[i]?.[1] ?? 0,
     ]),
   ];
 
