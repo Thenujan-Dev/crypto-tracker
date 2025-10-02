@@ -1,4 +1,3 @@
-import React from "react";
 import { MdWifiTethering } from "react-icons/md";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 

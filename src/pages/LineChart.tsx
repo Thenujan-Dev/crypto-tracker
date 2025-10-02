@@ -1,10 +1,8 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 
-interface HistoricalDataItem {
-  0: number;
-  1: number;
-}
+// Tuple type for HistoricalDataItem
+type HistoricalDataItem = [number, number];
 
 interface HistoricalData {
   prices: HistoricalDataItem[];
@@ -29,18 +27,28 @@ const LineChart: React.FC<LineChartProps> = ({ historicalData }) => {
 
   const options = {
     title: "Bitcoin Market Overview (Last 7 Days)",
-    hAxis: { title: "Date", format: "MMM dd" },
-    vAxis: { title: "Value (USD)" },
-    legend: { position: "bottom" },
+    hAxis: {
+      title: "Date",
+      format: "MMM dd",
+      textStyle: { color: "#ddd" },
+      titleTextStyle: { color: "#fff", fontSize: 14 },
+    },
+    vAxis: {
+      title: "Value (USD)",
+      textStyle: { color: "#ddd" },
+      titleTextStyle: { color: "#fff", fontSize: 14 },
+    },
+    legend: { position: "bottom", textStyle: { color: "#fff" } },
     colors: ["#8e44ad", "#3498db", "#e67e22"],
     backgroundColor: "transparent",
     chartArea: { width: "80%", height: "70%" },
     pointSize: 5,
     lineWidth: 2,
+    animation: { startup: true, duration: 1000, easing: "linear" },
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-10 p-6 rounded-2xl shadow-2xl bg-gray-900/80">
+    <div className="w-full max-w-6xl mx-auto mt-10 p-6 rounded-2xl shadow-2xl bg-gradient-to-r from-gray-900/90 to-gray-800/80">
       <Chart
         chartType="LineChart"
         width="100%"
