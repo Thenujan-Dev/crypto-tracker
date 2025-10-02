@@ -1,14 +1,8 @@
 import React from "react";
 import { Chart } from "react-google-charts";
+import type { HistoricalData } from "../crypto";
 
 // Tuple type for HistoricalDataItem
-type HistoricalDataItem = [number, number];
-
-interface HistoricalData {
-  prices: HistoricalDataItem[];
-  market_caps: HistoricalDataItem[];
-  total_volumes: HistoricalDataItem[];
-}
 
 interface LineChartProps {
   historicalData: HistoricalData;
